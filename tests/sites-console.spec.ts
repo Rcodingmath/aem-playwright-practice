@@ -1,0 +1,12 @@
+import { test, expect } from '@playwright/test';
+
+test('sites console loads for quickhawk79967', async ({ page }) => {
+  await page.goto('/ui#/aem/sites.html/content/2026/40/quickhawk79967');
+
+  const sites = page.frameLocator('iframe[title="Main Content"]');
+  const englishRow = sites.locator(
+    'coral-columnview-item[data-foundation-collection-item-id="/content/2026/40/quickhawk79967/en"]'
+  );
+
+  await expect(englishRow).toBeVisible({ timeout: 60_000 });
+});
